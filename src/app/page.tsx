@@ -1,6 +1,5 @@
 import Move from "@/components/motion/move";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { motion } from "framer-motion";
 
 export default function Home() {
   return (
