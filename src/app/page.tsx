@@ -1,5 +1,4 @@
-import Move from "@/components/motion/Move";
-import Mouse from "@/components/motion/Mouse";
+import Move from "@/components/motion/move";
 
 export default function Home() {
   return (
