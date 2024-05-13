@@ -7,7 +7,10 @@ import styles from "@/components/motion/styles.module.css";
 import clsx from "clsx";
 import { Button } from "@/components/ui/button";
 
-const Trail: React.FC<{ open: boolean }> = ({ open, children }) => {
+const Trail: React.FC<{ open: boolean; children: React.ReactNode }> = ({
+  open,
+  children,
+}) => {
   const items = React.Children.toArray(children);
   const trail = useTrail(items.length, {
     config: { mass: 5, tension: 2000, friction: 200 },
@@ -27,19 +30,19 @@ const Trail: React.FC<{ open: boolean }> = ({ open, children }) => {
   );
 };
 
-const calc = (x, y, rect) => [
+const calc = (x: any, y: any, rect: any) => [
   -(y - rect.top - rect.height / 2) / 20,
   (x - rect.left - rect.width / 2) / 20,
   1.1,
 ];
 
-const trans = (x, y, s) =>
+const trans = (x: any, y: any, s: any) =>
   `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
 export default function Move() {
   const [open, set] = useState(false);
 
-  const cardRef = useRef(null);
+  const cardRef = useRef<HTMLDivElement | null>(null);
   const config = useControls({
     mass: 1,
     tension: 170,
@@ -59,11 +62,14 @@ export default function Move() {
       xys: [0, 0, 1],
     });
 
-  const handleMouseMove = (e) => {
-    const rect = cardRef.current.getBoundingClientRect();
-    api.start({
-      xys: calc(e.clientX, e.clientY, rect),
-    });
+  const handleMouseMove = (e: any) => {
+    if (cardRef.current) {
+      // 添加null检查
+      const rect = cardRef.current.getBoundingClientRect();
+      api.start({
+        xys: calc(e.clientX, e.clientY, rect),
+      });
+    }
   };
 
   return (
