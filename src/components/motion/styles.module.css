@@ -1,0 +1,25 @@
+.trailsText {
+  position: relative;
+  width: 100%;
+  font-size: 6em;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  will-change: transform, opacity;
+  overflow: hidden;
+}
+
+.trailsText > div {
+  padding-right: 0.05em;
+  overflow: hidden;
+}
+
+
+
+
+.card {
+  background-image: url("../../../public/pexels-fox-58267-1172675.jpg");
+  background-size: cover;
+  border-radius: 8px;
+  transition: box-shadow 0.5s;
+  will-change: transform;
+}

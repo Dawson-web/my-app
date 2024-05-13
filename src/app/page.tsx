@@ -1,13 +1,9 @@
-import Move from "@/components/motion/move";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Move from "@/components/motion/Move";
+import Mouse from "@/components/motion/Mouse";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Avatar>
-        <AvatarImage src="https://github.com/shadcn.png" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
+    <main className="flex min-w-40 min-h-screen flex-col items-center  justify-center p-24">
       <Move />
     </main>
   );

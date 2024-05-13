@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 const { fontFamily } = require("tailwindcss/defaultTheme");
+/* @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap'); */
 
 const config = {
   darkMode: ["class"],
@@ -15,7 +16,10 @@ const config = {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        sm: "600px",
+        md: "900px",
+        lg: "1200px",
+        slg: "1800px",
       },
     },
     extend: {
