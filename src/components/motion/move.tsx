@@ -99,7 +99,7 @@ export default function Move() {
         <span>If you shed tears </span>
         <span>when you miss the sun</span>
         <span>you also miss the stars</span>
-        <Button>Go To Explore Dawson's World</Button>
+        <Button>Go To Explore Dawson World</Button>
       </div>
     </div>
   );
