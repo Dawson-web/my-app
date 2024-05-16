@@ -6,6 +6,7 @@ import { useControls } from "leva";
 import styles from "@/components/motion/styles.module.css";
 import clsx from "clsx";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const Trail: React.FC<{ open: boolean; children: React.ReactNode }> = ({
   open,
@@ -93,13 +94,16 @@ export default function Move() {
         style={{
           fontFamily: "'Courier New', Courier, monospace",
         }}
-        className="h-full flex flex-col justify-center items-flex-start gap-5 flex-wrap"
+        className="h-full flex flex-col justify-center items-center gap-5 flex-wrap"
       >
         <span>Stray Birds ——</span>
         <span>If you shed tears </span>
         <span>when you miss the sun</span>
         <span>you also miss the stars</span>
-        <Button>Go To Explore Dawson World</Button>
+        <Button className={clsx({ hidden: open })}>Start</Button>
+        <Button className={clsx({ hidden: !open })}>
+          <Link href={"/dashboard"}> Go To Explore Dawson World</Link>
+        </Button>
       </div>
     </div>
   );
