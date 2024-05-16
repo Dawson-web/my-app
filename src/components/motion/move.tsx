@@ -43,19 +43,8 @@ export default function Move() {
   const [open, set] = useState(false);
 
   const cardRef = useRef<HTMLDivElement | null>(null);
-  const config = useControls({
-    mass: 1,
-    tension: 170,
-    friction: 26,
-    clamp: false,
-    precision: 0.01,
-    velocity: 0,
-  });
 
-  const [{ xys }, api] = useSpring(
-    () => ({ xys: [0, 0, 1], config }),
-    [config]
-  );
+  const [{ xys }, api] = useSpring(() => ({ xys: [0, 0, 1] }));
 
   const handleMouseLeave = () =>
     api.start({
@@ -83,9 +72,10 @@ export default function Move() {
     >
       <animated.div
         className={clsx(
-          "p-2 w-1/3 h-1/2  min-w-[180px] min-h-[180px]  text-[1vw]",
+          "p-5 w-1/3 h-1/2  min-w-[180px] min-h-[180px]  text-[1vw]",
           {
             [styles.card]: open,
+            hidden: !open,
           }
         )}
         style={{ transform: xys.to(trans) }}
@@ -95,7 +85,7 @@ export default function Move() {
         <Trail open={open}>
           <span className="text-slate-300/50 h-1/4">Dawson</span>
           <span className="text-slate-300/50 h-1/4">一位</span>
-          <span className="text-slate-300/50 h-1/4">前端 </span>
+          <span className="text-slate-300/50 h-1/4">前端</span>
           <span className="text-slate-300/50 h-1/4">卡皮巴拉</span>
         </Trail>
       </animated.div>
@@ -103,10 +93,13 @@ export default function Move() {
         style={{
           fontFamily: "'Courier New', Courier, monospace",
         }}
-        className="h-full flex flex-col justify-center items-center gap-10 flex-wrap"
+        className="h-full flex flex-col justify-center items-flex-start gap-5 flex-wrap"
       >
-        Start from here
-        <Button>Click</Button>
+        <span>Stray Birds ——</span>
+        <span>If you shed tears </span>
+        <span>when you miss the sun</span>
+        <span>you also miss the stars</span>
+        <Button>Go To Explore Dawson's World</Button>
       </div>
     </div>
   );
