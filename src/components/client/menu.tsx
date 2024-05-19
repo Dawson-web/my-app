@@ -20,7 +20,7 @@ export default function Menu() {
           <NavigationMenuItem>
             <Link href="/dashboard/blog" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                blog文章
+                文章
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
@@ -28,6 +28,13 @@ export default function Menu() {
             <Link href="/dashboard/self" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 个人简介
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link href="/dashboard/control" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                控制台
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>

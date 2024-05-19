@@ -16,8 +16,8 @@ export default async function Page() {
     <main className=" gap-4 w-3/5 min-w-[300px]">
       <Card>
         <CardHeader>
-          <CardTitle>我：</CardTitle>
-          <CardDescription>陈涛 Dawson</CardDescription>
+          <CardTitle>Dawson</CardTitle>
+          <CardDescription></CardDescription>
         </CardHeader>
         <CardContent>
           <p>Cuit</p>

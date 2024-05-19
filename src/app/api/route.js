@@ -1,16 +1,18 @@
 import { ConnectDB } from "@/lib/config/db";
+import PageModel from "@/lib/models/PageModel";
 import TodoModel from "@/lib/models/TodoModel";
 import { log } from "console";
 import { NextResponse } from "next/server";
 export async function GET(request) {
-  const todos = await TodoModel.find({});
-  return NextResponse.json({ todos: todos });
+  const page = await PageModel.find({});
+  return NextResponse.json({ page });
 }
 
 export async function POST(request) {
   log("post method hit");
   const { title, description } = await request.json();
-  await TodoModel.create({ title, description });
+  log(title);
+  await PageModel.create({ title, description });
   return NextResponse.json({ msg: "Todo is created" });
 }
 
