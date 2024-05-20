@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 export default function DeleteButton(props: any) {
   const { form, method } = props;
   const getPages = async () => {
-    const res = await axios.get("/api");
+    const res = await axios.get("/api", {});
     console.log(res.data);
   };
   const deleteTodo = async (id: string) => {

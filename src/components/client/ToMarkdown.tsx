@@ -12,22 +12,24 @@ export default function ToMarkdown(props: any) {
   }, [props.file]);
 
   return (
-    <ReactMarkdown
-      components={{
-        code(props) {
-          const { className, children } = props;
-          const match = /language-(\w+)/.exec(className || "");
-          return match ? (
-            <SyntaxHighlighter language={match[1]} style={a11yDark}>
-              {String(children).replace(/\n$/, "")}
-            </SyntaxHighlighter>
-          ) : (
-            <code {...props}>{children}</code>
-          );
-        },
-      }}
-    >
-      {file}
-    </ReactMarkdown>
+    <div className="min-w-[300px]">
+      <ReactMarkdown
+        components={{
+          code(props) {
+            const { className, children } = props;
+            const match = /language-(\w+)/.exec(className || "");
+            return match ? (
+              <SyntaxHighlighter language={match[1]} style={a11yDark}>
+                {String(children).replace(/\n$/, "")}
+              </SyntaxHighlighter>
+            ) : (
+              <code {...props}>{children}</code>
+            );
+          },
+        }}
+      >
+        {file}
+      </ReactMarkdown>
+    </div>
   );
 }
