@@ -12,7 +12,7 @@ export default function ToMarkdown(props: any) {
   }, [props.file]);
 
   return (
-    <div className="min-w-[300px]">
+    <div className="min-w-[300px] w-[80vw]">
       <ReactMarkdown
         components={{
           code(props) {
