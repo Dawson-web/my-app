@@ -35,7 +35,7 @@ export default function InputFile() {
     reader.readAsText(file as Blob);
   };
   return (
-    <div className="grid w-full max-w-sm items-center gap-1.5">
+    <div className="flex flex-col gap-4">
       <Input id="title" />
       <Input id="myFile" type="file" />
       <Button
@@ -45,33 +45,8 @@ export default function InputFile() {
       >
         上传文件
       </Button>
-      {/* <ReactMarkdown
-        children={file}
-        components={{
-          code(props) {
-            const { children, className, node, ...rest } = props;
-            const match = /language-(\w+)/.exec(className || "");
-            return match ? (
-              <SyntaxHighlighter
-                {...rest}
-                PreTag="div"
-                children={String(children).replace(/\n$/, "")}
-                language={match[1]}
-                style={a11yDark}
-              />
-            ) : (
-              <code {...rest} className={className}>
-                {children}
-              </code>
-            );
-          },
-        }}
-      /> */}
       <ToMarkdown file={file} />
       <DeleteButton form={form} method={"post"} />
-
-      {/* {file}
-      </ReactMarkdown> */}
     </div>
   );
 }
