@@ -7,23 +7,23 @@ export default function DeleteButton(props: any) {
   const { form, method } = props;
 
   const getPages = async () => {
-    const res = await axios.get("/api/pages", {});
+    const res = await axios.get("/api/page", {});
     console.log(res.data);
   };
   const deletePages = async (id: string) => {
-    await axios.delete("/api/pages", { params: { id } });
+    await axios.delete("/api/page", { params: { id } });
   };
   const updatePages = async (id: string) => {
-    await axios.put("/api/pages", {}, { params: { id } });
+    await axios.put("/api/page", {}, { params: { id } });
   };
   const postPages = async (id: string) => {
-    await axios.post("/api/pages", {
+    await axios.post("/api/page", {
       title: form?.title,
       content: form?.content,
       type: form?.type,
       date: form?.date,
     });
-    await axios.post("/api/indexs", {
+    await axios.post("/api/index", {
       title: form?.title,
       introduction: form?.introduction,
       date: form?.date,

@@ -16,7 +16,7 @@ export default function Page() {
     Array<{ _id: string; title: string; content: string; date: string }>
   >([]);
   const getIndexs = async () => {
-    const res = await axios.get("/api/pages");
+    const res = await axios.get("/api/page");
     setIndexs(res.data.page);
     console.log(res.data);
   };
