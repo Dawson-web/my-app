@@ -4,6 +4,7 @@ import { Inter as FontSans } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 import "./globals.css";
+import { ConnectDB } from "@/lib/config/db";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -22,6 +23,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // 连接数据库
+  const LoadDB = async () => {
+    await ConnectDB();
+  };
+
+  LoadDB();
   return (
     <html lang="en">
       <body

@@ -1,34 +1,57 @@
 "use client";
-import DeleteButton from "@/components/client/DeleteButton";
-import ToMarkdown from "@/components/client/ToMarkdown";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Page() {
-  const [pages, setPages] = useState<
-    Array<{ title: string; description: string }>
+  const [indexs, setIndexs] = useState<
+    Array<{ _id: string; title: string; introduction: string; date: string }>
   >([]);
-  const getPages = async () => {
-    const res = await axios.get("/api");
-    setPages(res.data.page);
-    console.log(pages);
+  const getIndexs = async () => {
+    const res = await axios.get("/api/indexs");
+    setIndexs(res.data.page);
+    console.log(res.data);
   };
 
   useEffect(() => {
     const fetchData = async () => {
-      await getPages();
+      await getIndexs();
     };
-
     fetchData();
   }, []);
   return (
     <main>
       <h1 className={` mb-4 text-xl md:text-2xl`}>文章</h1>
-      <DeleteButton method="get" />
-      {pages.map((page) => (
+      {indexs.map((index) => (
         <>
-          <div key={page.title}>{page.title}</div>
-          <ToMarkdown file={page.description} />
+          <Card key={index._id} className="w-[85vw] w-min-[300px]">
+            <CardHeader>
+              <CardTitle>
+                <Link
+                  href={`blog/page?title=${index.title}`}
+                  legacyBehavior
+                  passHref
+                >
+                  {index.title}
+                </Link>
+              </CardTitle>
+              <CardDescription></CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p>简介：{index.introduction}</p>
+            </CardContent>
+            <CardFooter>
+              <p className="text-zinc-500">发布时间：{index.date}</p>
+            </CardFooter>
+          </Card>
         </>
       ))}
     </main>

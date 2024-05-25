@@ -1,7 +1,5 @@
-import { ConnectDB } from "@/lib/config/db";
 import PageModel from "@/lib/models/PageModel";
 import TodoModel from "@/lib/models/TodoModel";
-import { log } from "console";
 import { NextResponse } from "next/server";
 export async function GET(request) {
   const page = await PageModel.find({});
@@ -9,10 +7,8 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
-  log("post method hit");
-  const { title, description } = await request.json();
-  log(title);
-  await PageModel.create({ title, description });
+  const { title, content, type, date } = await request.json();
+  await PageModel.create({ title, content, type, date });
   return NextResponse.json({ msg: "Todo is created" });
 }
 
@@ -31,9 +27,3 @@ export async function PUT(request) {
   });
   return NextResponse.json({ msg: "Todo is Updated" });
 }
-
-const LoadDB = async () => {
-  await ConnectDB();
-};
-
-LoadDB();

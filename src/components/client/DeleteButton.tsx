@@ -5,22 +5,30 @@ import { Button } from "@/components/ui/button";
 
 export default function DeleteButton(props: any) {
   const { form, method } = props;
+
   const getPages = async () => {
-    const res = await axios.get("/api", {});
+    const res = await axios.get("/api/pages", {});
     console.log(res.data);
   };
-  const deleteTodo = async (id: string) => {
-    await axios.delete("/api", { params: { id } });
+  const deletePages = async (id: string) => {
+    await axios.delete("/api/pages", { params: { id } });
   };
-  const updateTodo = async (id: string) => {
-    await axios.put("/api", {}, { params: { id } });
+  const updatePages = async (id: string) => {
+    await axios.put("/api/pages", {}, { params: { id } });
   };
-  const postTodo = async (id: string) => {
-    await axios.post(
-      "/api",
-      { title: form?.title, description: form?.description },
-      { params: { id } }
-    );
+  const postPages = async (id: string) => {
+    await axios.post("/api/pages", {
+      title: form?.title,
+      content: form?.content,
+      type: form?.type,
+      date: form?.date,
+    });
+    await axios.post("/api/indexs", {
+      title: form?.title,
+      introduction: form?.introduction,
+      date: form?.date,
+    });
+    console.log(111, form);
   };
   const doMethod = async (id: string) => {
     switch (method) {
@@ -28,13 +36,13 @@ export default function DeleteButton(props: any) {
         await getPages();
         break; // 这里需要break，否则会执行下一个case
       case "delete":
-        await deleteTodo(id);
+        await deletePages(id);
         break;
       case "update":
-        await updateTodo(id);
+        await updatePages(id);
         break;
       case "post":
-        await postTodo(id);
+        await postPages(id);
         break;
       default:
         break;

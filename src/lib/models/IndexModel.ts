@@ -6,11 +6,7 @@ const Schema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    content: {
-      type: String,
-      required: true,
-    },
-    type: {
+    introduction: {
       type: String,
       required: true,
     },
@@ -22,6 +18,6 @@ const Schema = new mongoose.Schema(
   { timestamp: true }
 );
 
-const PageModel = mongoose.models.page || mongoose.model("page", Schema);
+const IndexModel = mongoose.models.index || mongoose.model("index", Schema);
 
-export default PageModel;
+export default IndexModel;
