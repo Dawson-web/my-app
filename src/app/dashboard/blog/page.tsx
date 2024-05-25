@@ -13,10 +13,10 @@ import Link from "next/link";
 
 export default function Page() {
   const [indexs, setIndexs] = useState<
-    Array<{ _id: string; title: string; introduction: string; date: string }>
+    Array<{ _id: string; title: string; content: string; date: string }>
   >([]);
   const getIndexs = async () => {
-    const res = await axios.get("/api/indexs");
+    const res = await axios.get("/api/pages");
     setIndexs(res.data.page);
     console.log(res.data);
   };
@@ -46,7 +46,7 @@ export default function Page() {
               <CardDescription></CardDescription>
             </CardHeader>
             <CardContent>
-              <p>简介：{index.introduction}</p>
+              <p>简介：{index.content}</p>
             </CardContent>
             <CardFooter>
               <p className="text-zinc-500">发布时间：{index.date}</p>
