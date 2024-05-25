@@ -23,6 +23,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // 连接数据库
+  const LoadDB = async () => {
+    await ConnectDB();
+  };
+
+  LoadDB();
   return (
     <html lang="en">
       <body
