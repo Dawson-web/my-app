@@ -1,6 +1,8 @@
+import { ConnectDB } from "@/lib/config/db";
 import PageModel from "@/lib/models/PageModel";
 import TodoModel from "@/lib/models/TodoModel";
 import { NextResponse } from "next/server";
+
 export async function GET(request) {
   const page = await PageModel.find({});
   return NextResponse.json({ page });
@@ -27,3 +29,9 @@ export async function PUT(request) {
   });
   return NextResponse.json({ msg: "Todo is Updated" });
 }
+// 连接数据库
+const LoadDB = async () => {
+  await ConnectDB();
+};
+
+LoadDB();
