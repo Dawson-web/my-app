@@ -13,10 +13,10 @@ import Link from "next/link";
 
 export default function Page() {
   const [indexs, setIndexs] = useState<
-    Array<{ _id: string; title: string; content: string; date: string }>
+    Array<{ _id: string; title: string; introduction: string; date: string }>
   >([]);
   const getIndexs = async () => {
-    const res = await axios.get("/api/page");
+    const res = await axios.get("/api/index");
     setIndexs(res.data.page);
     console.log(res.data);
   };
@@ -36,7 +36,8 @@ export default function Page() {
             <CardHeader>
               <CardTitle>
                 <Link
-                  href={`blog/page?title=${index.title}`}
+                  href={`blog/${index.title}`}
+                  // as={`/blog/article/${index.title}`}
                   legacyBehavior
                   passHref
                 >
@@ -46,7 +47,7 @@ export default function Page() {
               <CardDescription></CardDescription>
             </CardHeader>
             <CardContent>
-              <p>简介：{index.content}</p>
+              <p>简介：{index.introduction}</p>
             </CardContent>
             <CardFooter>
               <p className="text-zinc-500">发布时间：{index.date}</p>

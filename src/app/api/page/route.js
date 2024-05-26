@@ -4,13 +4,14 @@ import TodoModel from "@/lib/models/TodoModel";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
+  const title = request.nextUrl.searchParams.get("title");
   // 连接数据库
   const LoadDB = async () => {
     await ConnectDB();
   };
-
   await LoadDB();
-  const page = await PageModel.find({});
+  // 使用接收到的title进行查找
+  const page = await PageModel.find({ title });
   return NextResponse.json({ page });
 }
 
