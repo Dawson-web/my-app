@@ -1,4 +1,4 @@
-import DeleteButton from "@/components/client/DeleteButton";
+import ControlButton from "@/components/client/ControlButton";
 import FileInput from "@/components/client/FileInput";
 
 export default async function Page() {
@@ -6,7 +6,7 @@ export default async function Page() {
     <main>
       <h1 className={` mb-4 text-xl md:text-2xl`}>Dashboard</h1>
 
-      <DeleteButton />
+      <ControlButton />
       <FileInput />
     </main>
   );

@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import DeleteButton from "@/components/client/DeleteButton";
+import ControlButton from "@/components/client/ControlButton";
 import ToMarkdown from "./ToMarkdown";
 import {
   Select,
@@ -17,6 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 export default function InputFile() {
   const [form, setForm] = useState<object>();
   const [file, setFile] = useState<string>();
+  const [preview, setPreview] = useState<boolean>(false);
   useEffect(() => {
     if (file) {
       setForm({
@@ -59,34 +60,47 @@ export default function InputFile() {
     reader.readAsText(file as Blob);
   };
   return (
-    <div className="flex flex-col gap-4">
-      <Input id="title" className="w-[180px]" />
-      <Select
-        onValueChange={(value) => {
-          setForm({ ...form, type: value });
-          console.log(form);
-        }}
-      >
-        <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="类型" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="前端">前端</SelectItem>
-          <SelectItem value="后端">后端</SelectItem>
-        </SelectContent>
-      </Select>
-      <Textarea id="introduction" />
-      <Input id="myFile" type="file" />
+    <div className="flex flex-col gap-4 border-solid	border-2	rounded-lg	p-4 border-zinc-600	">
+      <div>
+        <h3>标题：</h3>
+        <Input id="title" className="w-[180px]" />
+      </div>
+      <div>
+        <h3>类型：</h3>
+        <Select
+          onValueChange={(value) => {
+            setForm({ ...form, type: value });
+            console.log(form);
+          }}
+        >
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="类型" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="前端">前端</SelectItem>
+            <SelectItem value="后端">后端</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+      <div>
+        <h3>简介：</h3>
+        <Textarea id="introduction" />
+      </div>
+      <div>
+        <h3>文本：</h3>
+        <Input id="myFile" type="file" />
+      </div>
 
       <Button
         onClick={() => {
           readFile();
         }}
+        className="w-[100px]"
       >
-        上传文件
+        预览
       </Button>
+      <ControlButton form={form} method={"post"} value="发布" />
       <ToMarkdown file={file} />
-      <DeleteButton form={form} method={"post"} />
     </div>
   );
 }

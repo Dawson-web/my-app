@@ -1,15 +1,8 @@
-import { ConnectDB } from "@/lib/config/db";
 import IndexModel from "@/lib/models/IndexModel";
 import TodoModel from "@/lib/models/TodoModel";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
-  // 连接数据库
-  const LoadDB = async () => {
-    await ConnectDB();
-  };
-
-  await LoadDB();
   const page = await IndexModel.find({});
   return NextResponse.json({ page });
 }

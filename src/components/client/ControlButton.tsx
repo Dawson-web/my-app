@@ -3,7 +3,7 @@
 import axios from "axios";
 import { Button } from "@/components/ui/button";
 
-export default function DeleteButton(props: any) {
+export default function ControlButton(props: any) {
   const { form, method } = props;
 
   const getPages = async () => {
@@ -28,7 +28,6 @@ export default function DeleteButton(props: any) {
       introduction: form?.introduction,
       date: form?.date,
     });
-    console.log(111, form);
   };
   const doMethod = async (id: string) => {
     switch (method) {
@@ -50,10 +49,13 @@ export default function DeleteButton(props: any) {
   };
   return (
     <Button
+      className="w-[100px]"
       onClick={async () => {
         await doMethod("1");
         console.log(props);
       }}
-    ></Button>
+    >
+      {props.value}
+    </Button>
   );
 }
