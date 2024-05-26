@@ -1,6 +1,7 @@
 export const ConnectDB = async () => {
   const mongoose = require("mongoose");
-  const uri = process.env.MONGODB_URI;
+  const uri =
+    "mongodb+srv://Dawson:3311498Dawson.@my-app.t3efd4t.mongodb.net/my-app";
   await mongoose.connect(uri);
   console.log("Connected to MongoDB");
   // var MongoClient = require("mongodb").MongoClient;
