@@ -1,15 +1,9 @@
 "use client";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
 import axios from "axios";
+import Loading from "@/components/motion/Loading";
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import IndexCard from "@/components/client/IndexCard";
 
 export default function Page() {
   const [indexs, setIndexs] = useState<
@@ -27,34 +21,15 @@ export default function Page() {
     };
     fetchData();
   }, []);
+  if (!indexs.length) return <Loading />;
   return (
     <main>
       <h1 className={` mb-4 text-xl md:text-2xl`}>文章</h1>
-      {indexs.map((index) => (
-        <>
-          <Card key={index._id} className="w-[85vw] w-min-[300px]">
-            <CardHeader>
-              <CardTitle>
-                <Link
-                  href={`blog/${index.title}`}
-                  // as={`/blog/article/${index.title}`}
-                  legacyBehavior
-                  passHref
-                >
-                  {index.title}
-                </Link>
-              </CardTitle>
-              <CardDescription></CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p>简介：{index.introduction}</p>
-            </CardContent>
-            <CardFooter>
-              <p className="text-zinc-500">发布时间：{index.date}</p>
-            </CardFooter>
-          </Card>
-        </>
-      ))}
+      <div className="flex flex-col gap-4">
+        {indexs.map((index) => (
+          <IndexCard index={index} key={index._id} />
+        ))}
+      </div>
     </main>
   );
 }

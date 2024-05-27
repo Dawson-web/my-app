@@ -1,5 +1,6 @@
 "use client";
 import ToMarkdown from "@/components/client/ToMarkdown";
+import Loading from "@/components/motion/Loading";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -37,7 +38,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   }, []);
 
   // 判断article是否存在，不存在就返回"Loading..."
-  if (!article.content) return "Loading...";
+  if (!article.content) return <Loading />;
 
   return (
     <div>
