@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 export default function ControlButton(props: any) {
   const { form, method } = props;
@@ -30,21 +31,30 @@ export default function ControlButton(props: any) {
     });
   };
   const doMethod = async (id: string) => {
-    switch (method) {
-      case "get":
-        await getPages();
-        break; // 这里需要break，否则会执行下一个case
-      case "delete":
-        await deletePages(id);
-        break;
-      case "update":
-        await updatePages(id);
-        break;
-      case "post":
-        await postPages(id);
-        break;
-      default:
-        break;
+    try {
+      switch (method) {
+        case "get":
+          await getPages();
+          break; // 这里需要break，否则会执行下一个case
+        case "delete":
+          await deletePages(id);
+          break;
+        case "update":
+          await updatePages(id);
+          break;
+        case "post":
+          await postPages(id);
+          break;
+        default:
+          break;
+      }
+      toast.success("Success", {
+        description: "操作成功",
+      });
+    } catch (e) {
+      toast.error("Fail", {
+        description: `操作失败：  ${e}`,
+      });
     }
   };
   return (

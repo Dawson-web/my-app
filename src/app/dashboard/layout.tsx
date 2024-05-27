@@ -1,4 +1,5 @@
 import Menu from "@/components/client/menu";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function DashboardLayout({
   children,
@@ -11,6 +12,7 @@ export default function DashboardLayout({
       <section className="w-full flex flex-col items-center ">
         {children}
       </section>
+      <Toaster />
     </>
   );
 }

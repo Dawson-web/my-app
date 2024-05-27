@@ -4,8 +4,12 @@ import TodoModel from "@/lib/models/TodoModel";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
-  const page = await IndexModel.find({});
-  return NextResponse.json({ page });
+  try {
+    const page = await IndexModel.find({});
+    return NextResponse.json({ page });
+  } catch (error) {
+    return NextResponse.json({ error });
+  }
 }
 
 export async function POST(request) {
