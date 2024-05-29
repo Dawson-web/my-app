@@ -1,6 +1,5 @@
 import { ConnectDB } from "@/lib/config/db";
 import IndexModel from "@/lib/models/IndexModel";
-import TodoModel from "@/lib/models/TodoModel";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
@@ -19,14 +18,19 @@ export async function POST(request) {
 }
 
 export async function DELETE(request) {
-  const id = await request.nextUrl.searchParams.get("id");
-  await TodoModel.findByIdAndDelete(id);
-  return NextResponse.json({ msg: "Index is Deleted" });
+  const title = await request.nextUrl.searchParams.get("title");
+
+  if (title) {
+    await IndexModel.deleteOne({ title });
+    return NextResponse.json({ msg: "Index is Deleted" });
+  } else {
+    return NextResponse.json({ error: "Title parameter is missing" });
+  }
 }
 
 export async function PUT(request) {
   const id = await request.nextUrl.searchParams.get("id");
-  await TodoModel.findByIdAndUpdate(id, {
+  await IndexModel.findByIdAndUpdate(id, {
     $set: {
       isCompleted: true,
     },

@@ -1,5 +1,5 @@
 import ControlButton from "@/components/client/ControlButton";
-import FileInput from "@/components/client/FileInput";
+import FileInput from "@/components/client/ArticleUpload";
 import Menu from "@/components/client/menu";
 
 import {

@@ -14,10 +14,9 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
-export default function InputFile() {
+export default function ArticleUpload() {
   const [form, setForm] = useState<object>();
   const [file, setFile] = useState<string>();
-  const [preview, setPreview] = useState<boolean>(false);
   useEffect(() => {
     if (file) {
       setForm({
@@ -60,7 +59,7 @@ export default function InputFile() {
     reader.readAsText(file as Blob);
   };
   return (
-    <div className="flex flex-col gap-4 border-solid	border-2	rounded-lg	p-4 border-zinc-600	">
+    <>
       <div>
         <h3>标题：</h3>
         <Input id="title" className="w-[180px]" />
@@ -101,6 +100,6 @@ export default function InputFile() {
       </Button>
       <ControlButton form={form} method={"post"} value="发布" />
       <ToMarkdown file={file} />
-    </div>
+    </>
   );
 }
