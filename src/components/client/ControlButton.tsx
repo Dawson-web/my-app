@@ -9,14 +9,10 @@ export default function ControlButton(props: any) {
 
   const getPages = async () => {
     const res = await axios.get("/api/page", {});
-    console.log(res.data);
   };
   const deletePages = async () => {
     const res = await axios.delete("/api/page", { params: { title } });
     const res_ = await axios.delete("/api/index", { params: { title } });
-    toast.success("Success", {
-      description: res.data.msg,
-    });
   };
   const updatePages = async () => {
     await axios.put("/api/page", {}, { params: {} });
@@ -52,6 +48,9 @@ export default function ControlButton(props: any) {
         default:
           break;
       }
+      toast.success("Success", {
+        description: "操作成功",
+      });
     } catch (e) {
       toast.error("Fail", {
         description: `操作失败：  ${e}`,
