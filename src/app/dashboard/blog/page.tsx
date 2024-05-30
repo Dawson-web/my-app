@@ -4,7 +4,6 @@ import axios from "axios";
 import Loading from "@/components/motion/Loading";
 import { useEffect, useState } from "react";
 import IndexCard from "@/components/client/IndexCard";
-import { toast } from "sonner";
 
 export default function Page() {
   const [indexs, setIndexs] = useState<
