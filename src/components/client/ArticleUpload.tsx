@@ -48,7 +48,8 @@ export default function ArticleUpload() {
     reader.onload = () => {
       if (reader.readyState === FileReader.DONE) {
         // 确保读取已完成
-        const base64String = reader.result.split(",")[1]; // 去除"data:image/jpeg;base64,"前缀
+        const result = reader.result as string;
+        const base64String = result?.split(",")[1];
         setForm({ ...form, content: base64String });
       }
     };
