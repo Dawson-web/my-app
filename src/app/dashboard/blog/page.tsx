@@ -19,12 +19,12 @@ export default function Page() {
   }, []);
   if (!indexs.length) return <Loading />;
   return (
-    <main className="grid grid-rows-3 gap-4 w-full h-full ">
-      <div className="row-span-1  w-[90%]  justify-self-center ">
+    <main className="flex flex-col w-full h-full items-center gap-2 flex-1">
+      <div className="row-span-1  w-[95%]  justify-self-center 	 ">
         <ProfileCard />
       </div>
-      <div className="row-span-3  w-[90%]  justify-self-center overflow-y-scroll ">
-        <div className="  gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3   ">
+      <div className="row-span-3  w-[95%]  justify-self-center overflow-y-scroll ">
+        <div className="  gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4   ">
           {indexs.map((index) => (
             <IndexCard index={index} key={index._id} />
           ))}
