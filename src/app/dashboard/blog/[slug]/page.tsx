@@ -40,9 +40,5 @@ export default function Page({ params }: { params: { slug: string } }) {
   // 判断article是否存在，不存在就返回"Loading..."
   if (!article.content) return <Loading />;
 
-  return (
-    <div>
-      <ToMarkdown content={article.content}></ToMarkdown>
-    </div>
-  );
+  return <ToMarkdown content={article.content} />;
 }

@@ -14,7 +14,7 @@ import { useState } from "react";
 export default function Menu() {
   const [option, setOption] = useState<string>("blog");
   return (
-    <NavigationMenu className="mb-2">
+    <NavigationMenu className="mb-2 shadow-lg">
       <NavigationMenuList className="flex sm:flex-col  ">
         <NavigationMenuItem onClick={() => setOption("blog")}>
           <Link href="/dashboard/blog" legacyBehavior passHref>

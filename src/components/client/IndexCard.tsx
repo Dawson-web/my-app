@@ -21,8 +21,8 @@ export default function IndexCard(props: any) {
           </Link>
         </CardTitle>
       </CardHeader>
-      <CardContent className="h-[100px] w-[90%] ">
-        <p className="truncate text-wrap">简介：{index.introduction}</p>
+      <CardContent className=" w-[90%] ">
+        <p className="truncate text-nowrap">简介：{index.introduction}</p>
       </CardContent>
       <CardFooter className="flex justify-between self-end ">
         <p className="text-zinc-500">发布时间：{index.date}</p>
