@@ -59,7 +59,7 @@ export default function ControlButton(props: any) {
   };
   return (
     <Button
-      className="w-[100px]"
+      className="w-[100px] bg-blue-600 hover:bg-blue-700 text-white"
       onClick={async () => {
         await doMethod();
       }}

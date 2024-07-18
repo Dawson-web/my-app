@@ -13,8 +13,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { log } from "console";
-import { Content } from "next/font/google";
 
 export default function ArticleUpload() {
   const [form, setForm] = useState<object>();
@@ -102,12 +100,11 @@ export default function ArticleUpload() {
         onClick={() => {
           readFile();
         }}
-        className="w-[100px]"
+        className="w-[100px] bg-blue-600 hover:bg-blue-700 text-white"
       >
         预览
       </Button>
       <ControlButton form={form} method={"post"} value="发布" />
-      {/* <ToMarkdown file={file} /> */}
     </>
   );
 }

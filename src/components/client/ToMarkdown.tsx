@@ -7,7 +7,7 @@ export default function ToMarkdown(props: any) {
   let string = content.toString();
   const article = Buffer.from(string, "base64").toString();
   return (
-    <div className="min-w-[300px] w-[80vw] prose lg:prose-xl">
+    <div className="min-w-[300px] w-[80vw] prose lg:prose-xl bg-zinc-200 p-8 rounded-lg shadow-lg">
       <Markdown remarkPlugins={[remarkGfm]}>{article}</Markdown>
     </div>
   );

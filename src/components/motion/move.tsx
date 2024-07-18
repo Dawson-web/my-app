@@ -2,7 +2,6 @@
 import React, { useState, useRef } from "react";
 import { useTrail, a } from "@react-spring/web";
 import { useSpring, animated } from "@react-spring/web";
-import { useControls } from "leva";
 import styles from "@/components/motion/styles.module.css";
 import clsx from "clsx";
 import { Button } from "@/components/ui/button";
