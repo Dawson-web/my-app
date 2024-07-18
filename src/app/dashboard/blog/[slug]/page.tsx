@@ -42,7 +42,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   return (
     <div>
-      <ToMarkdown file={article.content}></ToMarkdown>
+      <ToMarkdown content={article.content}></ToMarkdown>
     </div>
   );
 }

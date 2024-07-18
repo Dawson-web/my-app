@@ -1,6 +1,6 @@
 "use client";
 import { Input } from "@/components/ui/input";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import ControlButton from "@/components/client/ControlButton";
@@ -13,50 +13,53 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { log } from "console";
+import { Content } from "next/font/google";
 
 export default function ArticleUpload() {
   const [form, setForm] = useState<object>();
-  const [file, setFile] = useState<string>();
-  useEffect(() => {
-    if (file) {
-      setForm({
-        ...form,
-        title: document.querySelector<HTMLInputElement>("#title")?.value,
-        content: file,
-      });
-    }
-  }, [file]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   function formatDate(timestamp: number) {
     let now = new Date(timestamp); // 创建一个新的 Date 对象
     let year = now.getFullYear(); // 获取年份
     let month = String(now.getMonth() + 1).padStart(2, "0"); // 获取月份并将其格式化为两位数
     let date = String(now.getDate()).padStart(2, "0"); // 获取日期并将其格式化为两位数
-
     let formattedDate = `${year}-${month}-${date}`; // 组合年、月、日
-
     return formattedDate;
   }
+
   const readFile = () => {
-    const inputFile = document.querySelector<HTMLInputElement>("#myFile");
-    const inputTitle = document.querySelector<HTMLInputElement>("#title");
-    const textareaIntroduction =
+    const title = document.querySelector<HTMLInputElement>("#title");
+    const introduction =
       document.querySelector<HTMLTextAreaElement>("#introduction");
 
-    let file = inputFile?.files?.[0];
-    const reader = new FileReader();
-    reader.addEventListener("load", function () {
-      let content = reader.result;
-      setFile(content as string);
-      setForm({
-        ...form,
-        title: inputTitle?.value,
-        introduction: textareaIntroduction?.value,
-        date: formatDate(Date.now()),
-      });
+    setForm({
+      ...form,
+      title: title?.value,
+      introduction: introduction?.value,
+      date: formatDate(Date.now()),
     });
-    console.log(form);
+  };
 
-    reader.readAsText(file as Blob);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files || !e.target.files[0]) return;
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      if (reader.readyState === FileReader.DONE) {
+        // 确保读取已完成
+        const base64String = reader.result.split(",")[1]; // 去除"data:image/jpeg;base64,"前缀
+        setForm({ ...form, content: base64String });
+      }
+    };
+
+    reader.onerror = (error) => {
+      console.error("Error reading file:", error);
+    };
+
+    reader.readAsDataURL(file);
   };
   return (
     <>
@@ -87,7 +90,12 @@ export default function ArticleUpload() {
       </div>
       <div>
         <h3>文本：</h3>
-        <Input id="myFile" type="file" />
+        <Input
+          ref={fileInputRef}
+          id="myFile"
+          type="file"
+          onChange={handleFileChange}
+        />
       </div>
 
       <Button
@@ -99,7 +107,7 @@ export default function ArticleUpload() {
         预览
       </Button>
       <ControlButton form={form} method={"post"} value="发布" />
-      <ToMarkdown file={file} />
+      {/* <ToMarkdown file={file} /> */}
     </>
   );
 }

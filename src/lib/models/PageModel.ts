@@ -7,7 +7,7 @@ const Schema = new mongoose.Schema(
       required: true,
     },
     content: {
-      type: String,
+      type: Buffer,
       required: true,
     },
     type: {
