@@ -12,7 +12,7 @@ export default function ProfileCard() {
   const avatarImage = "/avatar.jpeg";
 
   return (
-    <main className=" gap-4  shadow-xl">
+    <main className=" gap-4  shadow-xl mt-2">
       <Card className="cursor-default ">
         <CardHeader>
           <CardTitle className="flex flex-row items-center gap-10">

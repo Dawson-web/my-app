@@ -1,10 +1,9 @@
 "use client";
 import { Input } from "@/components/ui/input";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import ControlButton from "@/components/client/ControlButton";
-import ToMarkdown from "./ToMarkdown";
 import {
   Select,
   SelectContent,
@@ -64,7 +63,7 @@ export default function ArticleUpload() {
     <>
       <div>
         <h3>标题：</h3>
-        <Input id="title" className="w-[180px]" />
+        <Input id="title" className="w-[180px] " />
       </div>
       <div>
         <h3>类型：</h3>
@@ -97,15 +96,17 @@ export default function ArticleUpload() {
         />
       </div>
 
-      <Button
-        onClick={() => {
-          readFile();
-        }}
-        className="w-[100px] bg-blue-600 hover:bg-blue-700 text-white"
-      >
-        预览
-      </Button>
-      <ControlButton form={form} method={"post"} value="发布" />
+      <div className="self-end ">
+        <Button
+          onClick={() => {
+            readFile();
+          }}
+          className="w-[100px] bg-blue-600 hover:bg-blue-700 text-white mr-2"
+        >
+          确认
+        </Button>
+        <ControlButton form={form} method={"post"} value="发布" />
+      </div>
     </>
   );
 }

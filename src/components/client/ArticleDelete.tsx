@@ -25,7 +25,6 @@ export default function ArticleDelete() {
       <Select
         onValueChange={(value) => {
           setTitle(value);
-          console.log(value);
         }}
       >
         <SelectTrigger className="w-[180px]">
@@ -33,8 +32,10 @@ export default function ArticleDelete() {
         </SelectTrigger>
         <SelectContent>
           {indexs.map((item) => {
+            // 将_id和title用连字符连接起来作为value，确保唯一性
+            const value = `${item._id}-${item.title}`;
             return (
-              <SelectItem key={item._id} value={item.title}>
+              <SelectItem key={item._id} value={value}>
                 {item.title}
               </SelectItem>
             );
