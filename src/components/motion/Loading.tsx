@@ -1,35 +1,34 @@
 import { useState, useEffect } from "react";
 import useMeasure from "react-use-measure";
 import { useSpring, animated } from "@react-spring/web";
-import styles from "@/components/motion/styles.module.css";
 
-const ProgressLoader = () => {
+const Loading = () => {
   const [ref, { width }] = useMeasure();
   const [progress, setProgress] = useState(0);
   const [totalResources, setTotalResources] = useState(0);
   const [loadedResources, setLoadedResources] = useState(0);
 
-  // 使用 progress 作为 useSpring 的配置项
   const props = useSpring({
     config: { duration: 500 },
     progress,
   });
 
   useEffect(() => {
-    // 获取所有资源的PerformanceResourceTiming对象
-    const entries = performance.getEntriesByType("resource");
+    const entries = performance.getEntriesByType(
+      "resource"
+    ) as PerformanceResourceTiming[];
 
-    // 计算总资源数量（去除导航资源）
     const countResources = entries.filter(
-      (entry) => entry.initiatorType !== "navigation"
+      (entry): entry is PerformanceResourceTiming =>
+        entry.initiatorType !== "navigation"
     ).length;
     setTotalResources(countResources);
 
-    // 计算已加载资源数量
-    const loadedCount = entries.filter((entry) => entry.responseEnd > 0).length;
+    const loadedCount = entries.filter(
+      (entry): entry is PerformanceResourceTiming => entry.responseEnd > 0
+    ).length;
     setLoadedResources(loadedCount);
 
-    // 更新进度
     const updateProgress = () => {
       const newProgress = (loadedCount / countResources) * 100;
       setProgress(newProgress);
@@ -37,9 +36,8 @@ const ProgressLoader = () => {
 
     updateProgress();
 
-    // 监听资源加载事件
     const observer = new PerformanceObserver((list, observer) => {
-      for (const entry of list.getEntries()) {
+      for (const entry of list.getEntries() as PerformanceResourceTiming[]) {
         if (entry.name && entry.responseEnd > 0) {
           setLoadedResources((prev) => prev + 1);
           updateProgress();
@@ -49,11 +47,10 @@ const ProgressLoader = () => {
 
     observer.observe({ entryTypes: ["resource"] });
 
-    // 清理函数
     return () => {
       observer.disconnect();
     };
-  }, [setProgress, setTotalResources, setLoadedResources]); // 添加所有 setState 函数到依赖列表
+  }, [setProgress, setTotalResources, setLoadedResources]);
 
   return (
     <div className="sm:h-full h-[80%]">
@@ -76,4 +73,4 @@ const ProgressLoader = () => {
   );
 };
 
-export default ProgressLoader;
+export default Loading;
