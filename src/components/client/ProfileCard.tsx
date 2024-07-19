@@ -103,8 +103,6 @@ export default function ProfileCard() {
             </svg>
             学校：CUIT
           </p>
-        </CardContent>
-        <CardFooter className="flex gap-x-10 gap-y-2 text-zinc-500  text-sm flex-wrap">
           <p className="flex gap-2 items-center w-[260px]">
             <svg
               width="15"
@@ -121,7 +119,7 @@ export default function ProfileCard() {
                 clip-rule="evenodd"
               ></path>
             </svg>
-            邮箱：<div className=" text-blue-600">3096567831@qq.com</div>
+            邮箱：3096567831@qq.com
           </p>
           <p className=" flex gap-2 items-center w-[130px]">
             <svg
@@ -147,7 +145,7 @@ export default function ProfileCard() {
               Github
             </a>
           </p>
-        </CardFooter>
+        </CardContent>
       </Card>
     </main>
   );

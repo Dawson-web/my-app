@@ -36,7 +36,7 @@ export default function Page() {
           </MenubarTrigger>
         </MenubarMenu>
       </Menubar>
-      <div className="flex flex-col gap-4 border-solid	border-2	rounded-lg	p-4  w-full bg-gray-50 shadow-lg">
+      <div className="flex flex-col gap-4 border-solid	border-2	rounded-lg	p-4  w-full bg-gray-50 shadow-lg dark:bg-gray-800">
         <RenderComponent component={component} />
       </div>
     </main>

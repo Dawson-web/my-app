@@ -9,7 +9,7 @@ export default function DashboardLayout({
   return (
     <main className="flex flex-col flex-1 sm:flex-row">
       <Menu />
-      <section className="w-full flex flex-col items-center h-screen bg-gray-200">
+      <section className="w-full flex flex-col items-center h-screen bg-gray-200 dark:bg-gray-900">
         {children}
       </section>
       <Toaster />

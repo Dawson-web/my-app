@@ -22,23 +22,31 @@ export default function Page({ params }: { params: { slug: string } }) {
     _id: "",
     _v: 0,
   });
+  const [isContentReady, setIsContentReady] = useState(false); // 新增状态控制内容是否准备好
+
   const getPages = async () => {
     const res = await axios.get("/api/page", { params: { title } });
     setArticle(res.data.page[0]);
-    console.log(res.data);
   };
 
   useEffect(() => {
     const fetchData = async () => {
       // 使用params属性传递查询参数
       await getPages();
+      // 延迟加载
+      const timerId = setTimeout(() => {
+        setIsContentReady(true);
+      }, 500); // 设置延迟时间，例如2秒
+
+      // 清除定时器，防止内存泄漏
+      return () => clearTimeout(timerId);
     };
 
     fetchData();
   }, []);
 
-  // 判断article是否存在，不存在就返回"Loading..."
-  if (!article.content) return <Loading />;
+  // 判断article是否存在以及是否准备好显示内容
+  if (!article.content || !isContentReady) return <Loading />;
 
   return <ToMarkdown content={article.content} />;
 }

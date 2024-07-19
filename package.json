@@ -21,7 +21,6 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "debug": "^4.3.1",
-    "framer-motion": "^11.1.8",
     "leva": "^0.9.35",
     "lucide-react": "^0.378.0",
     "mongodb": "^2.2.36",
