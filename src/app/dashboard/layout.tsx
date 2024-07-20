@@ -9,9 +9,7 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [layout, setLayout] = useState<string>(
-    localStorage.getItem("layout") || "horizontal"
-  );
+  const [layout, setLayout] = useState<string>("horizontal");
   return (
     <main
       className={clsx("flex h-screen flex-1 sm:flex-row overflow-y-hidden", {
