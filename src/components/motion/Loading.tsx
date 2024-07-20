@@ -58,10 +58,10 @@ const Loading = () => {
         <div className="animate-bounce">Loading...</div>
         <div
           ref={ref}
-          className="relative w-[200px] h-[50px] cursor-pointer border-2 border-blue-900 rounded"
+          className="relative w-[200px] h-[50px] cursor-pointer border-[2px] dark:border-gray-100 border-gray-900 rounded-md"
         >
           <animated.div
-            className="w-full h-full absolute bg-blue-600"
+            className="w-full h-full absolute bg-blue-600 rounded-sm "
             style={{ width: props.progress.interpolate((p) => `${p}%`) }}
           />
           <animated.div className="absolute w-full h-full flex items-center justify-center text-white ">

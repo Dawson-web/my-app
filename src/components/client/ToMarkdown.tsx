@@ -9,10 +9,10 @@ export default function ToMarkdown(props: any) {
   let string = content.toString();
   const article = Buffer.from(string, "base64").toString();
   return (
-    <div className="min-w-[300px] w-[80vw] prose lg:prose-xl bg-zinc-100 rounded-lg shadow-lg dark:bg-gray-400">
+    <div className="w-full prose lg:prose-xl bg-zinc-100 rounded-lg shadow-lg dark:bg-gray-400 p-4">
       <Markdown
         remarkPlugins={[remarkGfm]}
-        className={clsx("w-full h-screen overflow-y-scroll p-8", styles.scroll)}
+        className={clsx("w-full h-screen overflow-y-scroll ", styles.scroll)}
       >
         {article}
       </Markdown>

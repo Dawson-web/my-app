@@ -13,7 +13,7 @@ export default function IndexCard(props: any) {
   const [index, setIndex] = useState(props.index);
 
   return (
-    <Card className=" sm:border-t-4 sm:border-blue-600 border-x-0 border-b-0 shadow-lg w-full ">
+    <Card className=" sm:border-t-4 sm:border-blue-600 border-x-0 border-b-0 shadow-lg w-full  sm:rounded-b-md ">
       <CardHeader>
         <CardTitle className="transition  hover:text-zinc-400 ">
           <Link href={`blog/${index.title}`} legacyBehavior passHref>
