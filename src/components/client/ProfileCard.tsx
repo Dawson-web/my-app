@@ -15,7 +15,7 @@ export default function ProfileCard() {
     <main className=" gap-4  shadow-xl mt-2">
       <Card className="cursor-default ">
         <CardHeader>
-          <CardTitle className="flex flex-row items-center gap-10">
+          <CardTitle className="flex flex-row items-center gap-10 text-zinc-700 flex-wrap">
             <Image
               src={avatarImage}
               alt="Dawson's avatar"
@@ -23,7 +23,16 @@ export default function ProfileCard() {
               height={80}
               className="rounded-full"
             />
-            Dawson
+            <div> Dawson</div>
+            {/* 此处不能用Image会导致服务器报错 */}
+            <div className="flex gap-2 items-center text-lg flex-wrap">
+              博客访问量：
+              <img
+                src="https://count.getloli.com/get/@:dawson'blog"
+                alt=":name"
+                className="h-[80px]"
+              />
+            </div>
           </CardTitle>
         </CardHeader>
         <CardContent

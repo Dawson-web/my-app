@@ -19,11 +19,7 @@ export default function DashboardLayout({
       })}
     >
       <Menu layout={layout} setLayout={setLayout} />
-      <img
-        id="result"
-        className="block w-[200px] h-[50px] absolute top-0 right-0"
-        src="https://count.getloli.com/get/@dawson?theme=gelbooru"
-      />
+
       <section
         className={clsx(
           "w-full flex flex-col items-center h-screen bg-gray-200 dark:bg-gray-900"
