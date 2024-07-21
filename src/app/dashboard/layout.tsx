@@ -11,13 +11,7 @@ export default function DashboardLayout({
 }) {
   const [layout, setLayout] = useState<string>("horizontal");
   return (
-    <main
-      className={clsx("flex h-screen flex-1 sm:flex-row overflow-y-hidden", {
-        "sm:flex-col": layout === "vertical",
-        "flex-row": layout === "horizontal",
-        "flex-col": layout === "vertical",
-      })}
-    >
+    <main className={clsx("flex h-screen sm:flex-row ", {})}>
       <Menu layout={layout} setLayout={setLayout} />
 
       <section

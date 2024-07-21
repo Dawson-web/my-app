@@ -12,10 +12,10 @@ export default function ProfileCard() {
   const avatarImage = "/avatar.jpeg";
 
   return (
-    <main className=" gap-4  shadow-xl mt-2">
+    <main className=" gap-4  shadow-xl sm:mt-2 mt-[40px]">
       <Card className="cursor-default ">
         <CardHeader>
-          <CardTitle className="flex flex-row items-center gap-10 text-zinc-700 flex-wrap">
+          <CardTitle className="flex flex-row items-center sm:gap-8 gap-2 text-zinc-700 flex-wrap">
             <Image
               src={avatarImage}
               alt="Dawson's avatar"
@@ -23,14 +23,14 @@ export default function ProfileCard() {
               height={80}
               className="rounded-full"
             />
-            <div> Dawson</div>
+            <div className="self-center ">Dawson</div>
             {/* 此处不能用Image会导致服务器报错 */}
-            <div className="flex gap-2 items-center text-lg flex-wrap">
+            <div className="flex gap-2 items-center  flex-wrap self-end h-[80px]">
               博客访问量：
               <img
                 src="https://count.getloli.com/get/@:dawson'blog"
                 alt=":name"
-                className="h-[80px]"
+                className="h-[60px]"
               />
             </div>
           </CardTitle>

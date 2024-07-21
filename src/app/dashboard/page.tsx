@@ -1,10 +1,5 @@
-import FileInput from "@/components/client/ArticleUpload";
+import { redirect } from "next/navigation";
 
 export default async function Page() {
-  return (
-    <main>
-      <h1 className={` mb-4 text-xl md:text-2xl`}>Dashboard</h1>
-      <FileInput />
-    </main>
-  );
+  redirect(`/dashboard/blog`); // Navigate to the new post page
 }
