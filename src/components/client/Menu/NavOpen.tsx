@@ -2,12 +2,12 @@
 
 import clsx from "clsx";
 
-export const SliderOpen = (props: any) => {
+export const NavOpen = (props: any) => {
   const { open, setOpen } = props; // Assuming the component prop is a string that represents the component to render
   return (
     <div
       className={clsx(
-        "flex sm:hidden absolute  z-50 top-2 left-4 text-gray-600 hover:text-gray-800 ",
+        "flex sm:hidden absolute  z-50 top-2 left-4 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200",
         {
           "transition-transform duration-500 rotate-90": open,
           "transition-transform duration-500 rotate-0": !open,
