@@ -20,17 +20,35 @@ export default function IndexCard(props: any) {
         className="h-48 w-full object-cover rounded-t-lg"
       />
       <CardHeader>
-        <CardTitle className="transition  hover:text-zinc-400 ">
+        <CardTitle className=" hover:text-zinc-400 ">
           <Link href={`blog/${index.title}`} legacyBehavior passHref>
             {index.title}
           </Link>
         </CardTitle>
       </CardHeader>
       <CardContent className=" w-[90%] ">
-        <p className="truncate text-nowrap">简介：{index.introduction}</p>
+        <p className="truncate text-nowrap text-gray-600">
+          摘要：{index.introduction}
+        </p>
       </CardContent>
       <CardFooter className="flex justify-between self-end ">
-        <p className="text-zinc-500">发布时间：{index.date}</p>
+        <div className="text-[#00668c] flex bg-blue-200 px-2 py-1 rounded-md">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 10" />
+          </svg>
+          <span className="ml-2 ">{index.date}</span>
+        </div>
         <Button className="bg-blue-600 hover:bg-blue-700 text-white">
           <Link href={`blog/${index.title}`} legacyBehavior passHref>
             阅读
