@@ -17,6 +17,10 @@ export default function Menu(props: any) {
   const [option, setOption] = useState<string>("blog");
   const [open, setOpen] = useState<boolean>(false);
 
+  function checkOption(options: string) {
+    setOption(options);
+    setTimeout(() => setOpen(false), 400);
+  }
   return (
     <>
       <NavOpen open={open} setOpen={setOpen} />
@@ -38,7 +42,7 @@ export default function Menu(props: any) {
               }
             )}
           >
-            <NavigationMenuItem onClick={() => setOption("blog")}>
+            <NavigationMenuItem onClick={() => checkOption("blog")}>
               <Link href="/dashboard/blog" legacyBehavior passHref>
                 <NavigationMenuLink
                   className={clsx(navigationMenuTriggerStyle(), {
@@ -68,7 +72,7 @@ export default function Menu(props: any) {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
-            <NavigationMenuItem onClick={() => setOption("control")}>
+            <NavigationMenuItem onClick={() => checkOption("control")}>
               <Link href="/dashboard/control" legacyBehavior passHref>
                 <NavigationMenuLink
                   className={clsx(navigationMenuTriggerStyle(), {
