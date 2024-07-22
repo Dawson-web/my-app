@@ -1,5 +1,5 @@
 "use client";
-import Menu from "@/components/client/menu";
+import Menu from "@/components/client/Menu";
 import { Toaster } from "@/components/ui/sonner";
 import clsx from "clsx";
 import { useState } from "react";
