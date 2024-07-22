@@ -7,7 +7,7 @@ export default function FriendLink(props: any) {
       name: "bakptr",
       avatar_url: "/ptr.png",
       link: "https://pooi.me/",
-      intro: "社恐的bakaptr",
+      intro: "社恐但无所不知的bakaptr",
     },
     {
       name: "未晓",
