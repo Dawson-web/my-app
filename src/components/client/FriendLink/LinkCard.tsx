@@ -16,7 +16,7 @@ export default function LinkCard(props: any) {
 
   return (
     <article
-      className="min-w-[350px]  p-4 rounded-lg shadow-md bg-white hover:border-blue-600 border-2 hover:shadow-sm transition-all duration-300 ease-in-out"
+      className="  p-4 rounded-lg shadow-md bg-white hover:border-blue-600 border-2 hover:shadow-sm transition-all duration-300 ease-in-out"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -34,7 +34,7 @@ export default function LinkCard(props: any) {
           <img src={avatar_url} alt="avatar" className="rounded-full  " />
           <div className="bg-green-500 border-white border-4 rounded-full w-[20px] h-[20px] absolute bottom-[0px] right-[0px]"></div>
         </div>
-        <div className="w-[220px] text-center text-gray-600 font-medium p-2 flex flex-col items-start">
+        <div className="w-[70%] text-center text-gray-600 font-medium p-2 flex flex-col items-start">
           <span className="text-lg font-bold">{name}</span>
           <div className="text-sm">{intro}</div>
         </div>

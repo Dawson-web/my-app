@@ -26,7 +26,7 @@ export default function FriendLink(props: any) {
   ];
   return (
     <div className="mt-[40px] p-4">
-      <span className=" sm:text-3xl font-bold text-[#f5f5f5]">
+      <span className=" sm:text-3xl font-bold text-gray-50">
         <span className="text-blue-400"># </span>
         你好这里是Dawson的好盆友们~哈哈哈
       </span>

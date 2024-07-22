@@ -9,14 +9,19 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [layout, setLayout] = useState<string>("horizontal");
+  const [open, setOpen] = useState<boolean>(false);
+
   return (
-    <main className={clsx("flex h-screen sm:flex-row ")}>
-      <Menu layout={layout} setLayout={setLayout} />
+    <main
+      className={clsx("flex  sm:flex-row  w-full  ", {
+        "h-screen": open,
+      })}
+    >
+      <Menu open={open} setOpen={setOpen} className="w-[30vw] " />
 
       <section
         className={clsx(
-          "grow w-full flex flex-col items-center h-screen bg-gray-200 dark:bg-gray-900"
+          "  grow w-[100vw] sm:w-[70vw]  flex flex-col items-center  bg-gray-200 dark:bg-gray-900 min-h-screen"
         )}
       >
         {children}

@@ -30,10 +30,7 @@ const NavigationMenuList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <NavigationMenuPrimitive.List
     ref={ref}
-    className={cn(
-      // "group flex flex-1 list-none items-center justify-center ",
-      className
-    )}
+    className={cn(className)}
     {...props}
   />
 ));
@@ -42,7 +39,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cva(
-  "px-10 gap-8 dark:bg-gray-900 group  h-14 sm:w-[200px] w-screen flex items-end  bg-background dark:bg-gray-800 text-md font-semibold	 "
+  " px-10 gap-8 dark:bg-gray-900 group  h-14  flex items-end  bg-background dark:bg-gray-800 text-md font-semibold	 "
 );
 
 const NavigationMenuTrigger = React.forwardRef<

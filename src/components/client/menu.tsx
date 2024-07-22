@@ -15,7 +15,7 @@ import { DarkMode } from "./Menu/DarkMode";
 
 export default function Menu(props: any) {
   const [option, setOption] = useState<string>("blog");
-  const [open, setOpen] = useState<boolean>(false);
+  const { open, setOpen } = props;
 
   function checkOption(options: string) {
     setOption(options);
@@ -25,7 +25,7 @@ export default function Menu(props: any) {
     <>
       <NavOpen open={open} setOpen={setOpen} />
       <div
-        className={clsx("", {
+        className={clsx({
           "sm:relative sm:block  absolute ": open,
           "sm:relative sm:block  sm:h-full sm:w-auto  w-0 h-0 overflow-hidden":
             !open,
@@ -34,9 +34,9 @@ export default function Menu(props: any) {
         <NavigationMenu>
           <NavigationMenuList
             className={clsx(
-              "sm:flex flex-col justify-start  sm:h-screen h-0 overflow-hidden  pt-[40px]  bg-zinc-50 dark:bg-gray-900 ",
+              " sm:flex flex-col justify-start  sm:h-screen h-0 overflow-hidden  pt-[40px]  bg-white dark:bg-gray-900 ",
               {
-                " transition-[height] ease-in-out duration-500  h-screen  ":
+                " transition-[height] ease-in-out duration-500  h-screen  w-screen":
                   open,
                 " transition-[height] ease-in-out duration-500  h-0  ": !open,
               }
@@ -46,7 +46,8 @@ export default function Menu(props: any) {
               <Link href="/dashboard/blog" legacyBehavior passHref>
                 <NavigationMenuLink
                   className={clsx(navigationMenuTriggerStyle(), {
-                    "transition-[transform] translate-x-6 ": option == "blog",
+                    "transition-all duration-300 translate-x-6  border-l-4 border-l-blue-600":
+                      option == "blog",
                     "transition-[transform] translate-x-0": option !== "blog",
                   })}
                 >
@@ -76,7 +77,7 @@ export default function Menu(props: any) {
               <Link href="/dashboard/control" legacyBehavior passHref>
                 <NavigationMenuLink
                   className={clsx(navigationMenuTriggerStyle(), {
-                    "transition-[transform] translate-x-6 ":
+                    "transition-all duration-300 translate-x-6  border-l-4 border-l-blue-600 ":
                       option == "control",
                     "transition-[transform] translate-x-0":
                       option !== "control",
@@ -112,7 +113,8 @@ export default function Menu(props: any) {
               <Link href="/dashboard/links" legacyBehavior passHref>
                 <NavigationMenuLink
                   className={clsx(navigationMenuTriggerStyle(), {
-                    "transition-[transform] translate-x-6 ": option == "links",
+                    "transition-all duration-300 translate-x-6  border-l-4 border-l-blue-600 ":
+                      option == "links",
                     "transition-[transform] translate-x-0": option !== "links",
                   })}
                 >
@@ -139,7 +141,8 @@ export default function Menu(props: any) {
               <Link href="/" legacyBehavior passHref>
                 <NavigationMenuLink
                   className={clsx(navigationMenuTriggerStyle(), {
-                    "transition-[transform] translate-x-6 ": option == "blogss",
+                    "transition-all duration-300 translate-x-6  border-l-4 border-l-blue-600 ":
+                      option == "blogss",
                     "transition-[transform] translate-x-0": option !== "blogss",
                   })}
                 >
