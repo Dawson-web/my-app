@@ -5,15 +5,23 @@ export default function FriendLink(props: any) {
   const finfo = [
     {
       name: "bakptr",
-      avatar_url: "/ptr.png",
+      avatar_url: "https://q.qlogo.cn/g?b=qq&nk=369060891&s=160",
       link: "https://pooi.me/",
       intro: "社恐但无所不知的bakaptr",
     },
     {
       name: "未晓",
-      avatar_url: "/cn.png",
+      avatar_url: "https://q.qlogo.cn/g?b=qq&nk=1537476031&s=160",
       link: "https://www.dawnot.online/",
       intro: "一只正在学习前端的未晓",
+    },
+    {
+      name: "For You",
+      avatar_url:
+        "http://qn.lackofcsy.cn/config/055c0cb176b1f4c0cdb91e277a8eeb05.jpg",
+      link: "https://www.dawnot.online/",
+      intro:
+        "螃蟹在剥我的壳 ,笔记本在写我， 漫天的我落在枫叶上雪花上， 而你在想我。",
     },
   ];
   return (
