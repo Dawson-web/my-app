@@ -46,8 +46,8 @@ export default function Menu(props: any) {
               <Link href="/dashboard/blog" legacyBehavior passHref>
                 <NavigationMenuLink
                   className={clsx(navigationMenuTriggerStyle(), {
-                    "transition translate-x-6 ": option == "blog",
-                    "transition translate-x-0": option !== "blog",
+                    "transition-[transform] translate-x-6 ": option == "blog",
+                    "transition-[transform] translate-x-0": option !== "blog",
                   })}
                 >
                   <svg
@@ -76,8 +76,10 @@ export default function Menu(props: any) {
               <Link href="/dashboard/control" legacyBehavior passHref>
                 <NavigationMenuLink
                   className={clsx(navigationMenuTriggerStyle(), {
-                    "transition translate-x-6 ": option == "control",
-                    "transition translate-x-0": option !== "control",
+                    "transition-[transform] translate-x-6 ":
+                      option == "control",
+                    "transition-[transform] translate-x-0":
+                      option !== "control",
                   })}
                 >
                   <svg
@@ -106,12 +108,12 @@ export default function Menu(props: any) {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/dashboard/control" legacyBehavior passHref>
+            <NavigationMenuItem onClick={() => checkOption("links")}>
+              <Link href="/dashboard/links" legacyBehavior passHref>
                 <NavigationMenuLink
                   className={clsx(navigationMenuTriggerStyle(), {
-                    "transition translate-x-6 ": option == "blogs",
-                    "transition translate-x-0": option !== "blogs",
+                    "transition-[transform] translate-x-6 ": option == "links",
+                    "transition-[transform] translate-x-0": option !== "links",
                   })}
                 >
                   <svg
@@ -134,11 +136,11 @@ export default function Menu(props: any) {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/dashboard/control" legacyBehavior passHref>
+              <Link href="/" legacyBehavior passHref>
                 <NavigationMenuLink
                   className={clsx(navigationMenuTriggerStyle(), {
-                    "transition translate-x-6 ": option == "blogss",
-                    "transition translate-x-0": option !== "blogss",
+                    "transition-[transform] translate-x-6 ": option == "blogss",
+                    "transition-[transform] translate-x-0": option !== "blogss",
                   })}
                 >
                   <svg

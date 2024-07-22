@@ -11,12 +11,12 @@ export default function DashboardLayout({
 }) {
   const [layout, setLayout] = useState<string>("horizontal");
   return (
-    <main className={clsx("flex h-screen sm:flex-row ", {})}>
+    <main className={clsx("flex h-screen sm:flex-row ")}>
       <Menu layout={layout} setLayout={setLayout} />
 
       <section
         className={clsx(
-          "w-full flex flex-col items-center h-screen bg-gray-200 dark:bg-gray-900"
+          "grow w-full flex flex-col items-center h-screen bg-gray-200 dark:bg-gray-900"
         )}
       >
         {children}

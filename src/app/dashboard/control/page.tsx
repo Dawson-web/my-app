@@ -14,7 +14,7 @@ export default function Page() {
   const [component, setComponent] = useState<string>("ArticleUpload");
 
   return (
-    <main className=" flex flex-col items-center justify-center gap-4 p-4 w-[85vw] min-w-[360px]">
+    <main className=" flex flex-col items-center justify-center gap-4  w-[85vw] min-w-[360px]">
       <h1 className={` mb-4 text-xl md:text-2xl`}>控制台</h1>
       <Menubar className="w-full shadow-md">
         <MenubarMenu>
