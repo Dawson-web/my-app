@@ -22,7 +22,15 @@ export default function Menu(props: any) {
 
   return (
     <>
-      <div className="flex sm:hidden absolute  z-50 top-2 left-4 text-gray-600 hover:text-gray-800">
+      <div
+        className={clsx(
+          "flex sm:hidden absolute  z-50 top-2 left-4 text-gray-600 hover:text-gray-800 ",
+          {
+            "transition-transform duration-500 rotate-90": slider,
+            "transition-transform duration-500 rotate-0": !slider,
+          }
+        )}
+      >
         <svg
           width="25"
           height="25"
@@ -30,8 +38,8 @@ export default function Menu(props: any) {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className={clsx("absolute", {
-            "z-0 transition-opacity duration-500	opacity-0": slider,
-            "z-20 transition-opacity duration-500	deley-100 opacity-1": !slider,
+            "z-0 transition duration-500	opacity-0  ": slider,
+            "z-20 transition duration-500	deley-200 opacity-1": !slider,
           })}
           onClick={() => setSlider(true)}
         >
@@ -49,7 +57,7 @@ export default function Menu(props: any) {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className={clsx({
-            "z-20 transition-opacity duration-500 deley-100	opacity-1": slider,
+            "z-20 transition-opacity duration-500 deley-200	opacity-1": slider,
             "transition-opacity duration-500	opacity-0": !slider,
           })}
           onClick={() => setSlider(false)}
@@ -69,9 +77,7 @@ export default function Menu(props: any) {
             !slider,
         })}
       >
-        <NavigationMenu
-          className={clsx("shadow-lg  sm:mr-0   h-0  sm:h-screen   ")}
-        >
+        <NavigationMenu>
           <NavigationMenuList
             className={clsx(
               "sm:flex flex-col justify-start  sm:h-screen h-0 overflow-hidden  pt-[40px]  bg-zinc-50 ",
